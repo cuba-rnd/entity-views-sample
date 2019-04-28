@@ -1,10 +1,8 @@
 package com.company.entityviewssample.service;
 
-import com.company.entityviewssample.entity.Department;
 import com.company.entityviewssample.entity.MutableDepartment;
 import com.company.entityviewssample.entity.ReadonlyDepartmentAndManager;
 import com.haulmont.addons.cuba.entity.views.ViewsSupportDataManagerBean;
-import com.haulmont.cuba.core.entity.contracts.Id;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
