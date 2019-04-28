@@ -1,11 +1,14 @@
 buildscript {
     ext.cubaVersion = '7.0.4'
     repositories {
-
+        mavenLocal()
         maven {
             url 'https://dl.bintray.com/cuba-platform/main'
         }
         jcenter()
+        maven {
+            url "https://cuba-platform.bintray.com/labs"
+        }
 
     }
     dependencies {
@@ -38,6 +41,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
+    appComponent("com.haulmont.addons.cuba.entity.views:entity-views-core:0.1.2")
 
 }
 
@@ -61,7 +65,16 @@ configure([globalModule, coreModule, webModule]) {
     artifacts {
         archives sourceJar
     }
+
+    dependencies {
+        if (!JavaVersion.current().isJava8()) {
+            runtime('javax.xml.bind:jaxb-api:2.3.1')
+            runtime('org.glassfish.jaxb:jaxb-runtime:2.3.1')
+        }
+    }
+
 }
+
 
 configure(globalModule) {
     entitiesEnhancing {
