@@ -4,6 +4,7 @@ import com.company.entityviewssample.entity.Department;
 import com.company.entityviewssample.entity.MutableDepartment;
 import com.company.entityviewssample.service.DepartmentsService;
 import com.haulmont.addons.cuba.entity.views.gui.model.impl.DataContextViewSupportImpl;
+import com.haulmont.cuba.core.global.EntityStates;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.gui.model.InstanceLoader;
@@ -32,17 +33,23 @@ public class DepartmentEdit extends StandardEditor<MutableDepartment> {
     @Inject
     private InstanceLoader<Department> instanceLoader;
 
+    @Inject
+    private EntityStates entityStates;
+
     @Subscribe
     private void onInit(InitEvent event) {
         DataContextImpl dataContext = new DataContextViewSupportImpl(AppContext.getApplicationContext());
         instanceLoader.setDataContext(dataContext);
         getScreenData().setDataContext(dataContext);
-
     }
 
     @Install(to = "instanceLoader", target = Target.DATA_LOADER)
     private MutableDepartment dptLoadDelegate(LoadContext<MutableDepartment> loadContext) {
-        return departmentsService.getDepartment((UUID) loadContext.getId());
+        if (!entityStates.isNew(this.getEditedEntity().getOrigin())) {//Cannot override EntityStates to a version with views support
+            return departmentsService.getDepartment((UUID) loadContext.getId());
+        } else {
+            return getEditedEntity();
+        }
     }
 
 }

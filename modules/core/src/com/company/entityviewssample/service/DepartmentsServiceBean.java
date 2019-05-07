@@ -3,6 +3,8 @@ package com.company.entityviewssample.service;
 import com.company.entityviewssample.entity.MutableDepartment;
 import com.company.entityviewssample.entity.ReadonlyDepartmentAndManager;
 import com.haulmont.addons.cuba.entity.views.ViewsSupportDataManagerBean;
+import com.haulmont.cuba.core.entity.Entity;
+import com.haulmont.cuba.core.global.LoadContext;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -16,21 +18,22 @@ public class DepartmentsServiceBean implements DepartmentsService {
     ViewsSupportDataManagerBean dataManager;
 
     @Override
-    public List<ReadonlyDepartmentAndManager> getReadonlyDepartmentData() {
+    public List<ReadonlyDepartmentAndManager> getReadonlyDepartmentData(LoadContext<ReadonlyDepartmentAndManager> loadContext) {
         return dataManager.load(ReadonlyDepartmentAndManager.class).list();
     }
 
     @Override
-    public List<MutableDepartment> getDepartmentsForEdit() {
-        return dataManager.load(MutableDepartment.class).list();
+    public MutableDepartment createDepartment() {
+        return dataManager.create(MutableDepartment.class);
     }
 
     @Override
     public MutableDepartment getDepartment(UUID id) {
-        if (id == null) {
-            return dataManager.create(MutableDepartment.class);
-        }
         return dataManager.load(MutableDepartment.class).id(id).one();
+    }
 
+    @Override
+    public void removeDepartment(Entity entity) {
+        dataManager.remove(entity);
     }
 }

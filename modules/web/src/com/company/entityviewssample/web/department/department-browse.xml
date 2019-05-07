@@ -7,11 +7,7 @@
         <collection id="departmentsDc"
                     class="com.company.entityviewssample.entity.Department"
                     view="department-edit-view">
-            <loader id="departmentsDl">
-                <query>
-                    <![CDATA[select e from entityviewssample_Department e]]>
-                </query>
-            </loader>
+            <loader id="departmentsDl"/>
         </collection>
     </data>
     <dialogMode height="600"
