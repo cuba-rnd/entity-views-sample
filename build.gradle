@@ -41,7 +41,7 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("com.haulmont.addons.cuba.entity.views:entity-views-core:0.1.1")
+    appComponent("com.haulmont.addons.cuba.entity.views:entity-views-core:0.1.2")
 
 }
 

@@ -24,6 +24,4 @@
         </property>
     </bean>
 
-    <bean name="cuba_MetadataLoader" class="com.haulmont.addons.cuba.entity.views.scan.ViewsSupportMetadataLoader" scope="prototype" primary="true"/>
-
 </beans>
