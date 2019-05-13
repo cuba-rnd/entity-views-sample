@@ -5,8 +5,7 @@
         messagesPack="com.company.entityviewssample.web.department">
     <data readOnly="true">
         <collection id="departmentsDc"
-                    class="com.company.entityviewssample.entity.Department"
-                    view="department-edit-view">
+                    class="com.company.entityviewssample.entity.Department">
             <loader id="departmentsDl"/>
         </collection>
     </data>
