@@ -4,4 +4,10 @@
     <view name="department-edit-view" entity="entityviewssample_Department" extends="_local">
         <property name="manager"/>
     </view>
+    <view entity="entityviewssample_Employee" name="employee-browse-view" extends="_local">
+        <property name="department" view="_local"/>
+    </view>
+    <view entity="entityviewssample_Employee" name="employee-edit-view" extends="_local">
+        <property name="department" view="_local"/>
+    </view>
 </views>

@@ -6,7 +6,7 @@
     <data readOnly="true">
         <collection id="employeesDc"
                     class="com.company.entityviewssample.entity.Employee"
-                    view="_local">
+                    view="employee-browse-view">
             <loader id="employeesDl">
                 <query>
                     <![CDATA[select e from entityviewssample_Employee e]]>
@@ -35,6 +35,7 @@
                 <column id="firstName"/>
                 <column id="lastName"/>
                 <column id="birthDate"/>
+                <column id="department"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

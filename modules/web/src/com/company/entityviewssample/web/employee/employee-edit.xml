@@ -6,9 +6,16 @@
     <data>
         <instance id="employeeDc"
                   class="com.company.entityviewssample.entity.Employee"
-                  view="_local">
+                  view="employee-edit-view">
             <loader/>
         </instance>
+        <collection id="departmentsDc" class="com.company.entityviewssample.entity.Department" view="_local">
+            <loader id="departmentLc">
+                <query>
+                    <![CDATA[select d from entityviewssample_Department d]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
@@ -18,6 +25,11 @@
                 <textField id="firstNameField" property="firstName"/>
                 <textField id="lastNameField" property="lastName"/>
                 <dateField id="birthDateField" property="birthDate"/>
+                <lookupPickerField id="deptField" optionsContainer="departmentsDc" property="department">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                    </actions>
+                </lookupPickerField>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
