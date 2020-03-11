@@ -2,7 +2,7 @@ package com.company.entityviewssample.web.department;
 
 import com.company.entityviewssample.entity.Department;
 import com.company.entityviewssample.entity.MutableDepartment;
-import com.haulmont.addons.cuba.entity.views.gui.model.impl.DataContextViewSupportImpl;
+import com.haulmont.addons.cuba.entity.projections.gui.model.impl.DataContextProjectionSupportImpl;
 import com.haulmont.cuba.core.sys.AppContext;
 import com.haulmont.cuba.gui.model.InstanceLoader;
 import com.haulmont.cuba.gui.model.impl.DataContextImpl;
@@ -26,7 +26,7 @@ public class DepartmentEdit extends StandardEditor<MutableDepartment> {
 
     @Subscribe
     private void onInit(InitEvent event) {
-        DataContextImpl dataContext = new DataContextViewSupportImpl(AppContext.getApplicationContext());
+        DataContextImpl dataContext = new DataContextProjectionSupportImpl(AppContext.getApplicationContext());
         instanceLoader.setDataContext(dataContext);
         getScreenData().setDataContext(dataContext);
     }

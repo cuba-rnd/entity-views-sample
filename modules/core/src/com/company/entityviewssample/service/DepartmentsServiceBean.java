@@ -2,8 +2,8 @@ package com.company.entityviewssample.service;
 
 import com.company.entityviewssample.entity.MutableDepartment;
 import com.company.entityviewssample.entity.ReadonlyDepartmentAndManager;
-import com.haulmont.addons.cuba.entity.views.ViewsSupportDataManagerBean;
 import com.haulmont.cuba.core.entity.Entity;
+import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.LoadContext;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class DepartmentsServiceBean implements DepartmentsService {
 
     @Inject
-    ViewsSupportDataManagerBean dataManager;
+    DataManager dataManager;
 
     @Override
     public List<ReadonlyDepartmentAndManager> getReadonlyDepartmentData(LoadContext<ReadonlyDepartmentAndManager> loadContext) {

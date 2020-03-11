@@ -3,7 +3,7 @@ package com.company.entityviewssample.web.department;
 import com.company.entityviewssample.entity.MutableDepartment;
 import com.company.entityviewssample.entity.ReadonlyDepartmentAndManager;
 import com.company.entityviewssample.service.DepartmentsService;
-import com.haulmont.addons.cuba.entity.views.scan.ViewsConfiguration;
+import com.haulmont.addons.cuba.entity.projections.scan.ProjectionsConfiguration;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.MetadataTools;
 import com.haulmont.cuba.gui.Dialogs;
@@ -34,7 +34,7 @@ public class DepartmentBrowse extends StandardLookup<ReadonlyDepartmentAndManage
     private DepartmentsService departmentsService;
 
     @Inject
-    private ViewsConfiguration viewsConfiguration;
+    private ProjectionsConfiguration viewsConfiguration;
 
     @Inject
     private GroupTable<ReadonlyDepartmentAndManager> departmentsTable;
@@ -58,7 +58,7 @@ public class DepartmentBrowse extends StandardLookup<ReadonlyDepartmentAndManage
 
     @Subscribe
     private void onInit(InitEvent event) {
-        departmentsDc.setView(viewsConfiguration.getViewByInterface(ReadonlyDepartmentAndManager.class));
+        departmentsDc.setView(viewsConfiguration.getViewByProjection(ReadonlyDepartmentAndManager.class));
     }
 
     @Subscribe("departmentsTable.create")

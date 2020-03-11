@@ -1,12 +1,12 @@
 package com.company.entityviewssample.entity;
 
-import com.haulmont.addons.cuba.entity.views.BaseEntityView;
+import com.haulmont.addons.cuba.entity.projections.BaseProjection;
 import com.haulmont.chile.core.annotations.MetaProperty;
 
 import java.util.Date;
 import java.util.UUID;
 
-public interface ReadonlyDepartmentAndManager extends BaseEntityView<Department, UUID> {
+public interface ReadonlyDepartmentAndManager extends BaseProjection<Department, UUID> {
 
     String getName();
 
@@ -14,7 +14,7 @@ public interface ReadonlyDepartmentAndManager extends BaseEntityView<Department,
 
     EmployeeFullName getManager();
 
-    interface EmployeeFullName extends BaseEntityView<Employee, UUID> {
+    interface EmployeeFullName extends BaseProjection<Employee, UUID> {
 
         String getFirstName();
 
